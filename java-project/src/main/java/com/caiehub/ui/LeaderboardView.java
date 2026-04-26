@@ -14,18 +14,18 @@ public class LeaderboardView {
     public LeaderboardView() {
         root = new VBox(20);
         root.setPadding(new Insets(30));
-        root.setStyle("-fx-background-color: #ffffff;");
+        root.setStyle("-fx-background-color: transparent;");
         
         Label header = new Label("Global Leaderboard");
-        header.setFont(Font.font("System", FontWeight.BOLD, 28));
+        header.getStyleClass().add("header-text");
 
         Label desc = new Label("Compete with students worldwide. Earn points by completing past papers.");
-        desc.setTextFill(javafx.scene.paint.Color.web("#64748b"));
+        desc.getStyleClass().add("subtext");
 
         GridPane table = new GridPane();
         table.setHgap(30);
         table.setVgap(15);
-        table.setStyle("-fx-background-color: #f8fafc; -fx-padding: 20px; -fx-border-color: #e2e8f0; -fx-border-radius: 8px;");
+        table.getStyleClass().add("card");
 
         // Headers
         Label rH = new Label("Rank"); rH.setFont(Font.font("System", FontWeight.BOLD, 14));

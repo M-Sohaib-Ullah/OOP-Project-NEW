@@ -15,10 +15,10 @@ public class AnalyticsView {
     public AnalyticsView() {
         root = new VBox(20);
         root.setPadding(new Insets(30));
-        root.setStyle("-fx-background-color: #ffffff;");
+        root.setStyle("-fx-background-color: transparent;");
         
         Label header = new Label("Analytics & Progress");
-        header.setFont(Font.font("System", FontWeight.BOLD, 28));
+        header.getStyleClass().add("header-text");
 
         GridPane statsGrid = new GridPane();
         statsGrid.setHgap(20);
@@ -30,12 +30,12 @@ public class AnalyticsView {
         statsGrid.add(createAnalyticCard("Current Streak", "5 Days"), 1, 1);
 
         VBox chartMockup = new VBox(10);
-        chartMockup.setPadding(new Insets(20));
-        chartMockup.setStyle("-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8px; -fx-alignment: center;");
+        chartMockup.getStyleClass().add("card");
+        chartMockup.setStyle("-fx-alignment: center;");
         chartMockup.setPrefHeight(250);
         
         Label chartLabel = new Label("[Performance Progress Chart]");
-        chartLabel.setTextFill(javafx.scene.paint.Color.web("#94a3b8"));
+        chartLabel.getStyleClass().add("subtext");
         chartLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
         chartMockup.getChildren().add(chartLabel);
 
@@ -44,12 +44,11 @@ public class AnalyticsView {
 
     private VBox createAnalyticCard(String title, String value) {
         VBox card = new VBox(10);
-        card.setPadding(new Insets(20));
-        card.setStyle("-fx-background-color: #f1f5f9; -fx-border-radius: 8px;");
+        card.getStyleClass().add("card");
         card.setPrefWidth(250);
 
         Label titleLabel = new Label(title);
-        titleLabel.setTextFill(javafx.scene.paint.Color.web("#64748b"));
+        titleLabel.getStyleClass().add("subtext");
         
         Label valueLabel = new Label(value);
         valueLabel.setFont(Font.font("System", FontWeight.BOLD, 24));

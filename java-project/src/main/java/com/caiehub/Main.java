@@ -13,6 +13,11 @@ public class Main extends Application {
         
         MainAppLayout mainLayout = new MainAppLayout();
         Scene scene = new Scene(mainLayout.getView(), 1024, 768);
+        try {
+            scene.getStylesheets().add(getClass().getResource("/com/caiehub/style.css").toExternalForm());
+        } catch (Exception e) {
+            System.err.println("Could not load stylesheet: " + e.getMessage());
+        }
         
         primaryStage.setScene(scene);
         primaryStage.show();

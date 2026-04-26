@@ -18,29 +18,32 @@ public class StudyPlannerView {
     public StudyPlannerView() {
         root = new VBox(20);
         root.setPadding(new Insets(30));
-        root.setStyle("-fx-background-color: #ffffff;");
+        root.setStyle("-fx-background-color: transparent;");
         
         Label header = new Label("AI Study Planner");
-        header.setFont(Font.font("System", FontWeight.BOLD, 28));
+        header.getStyleClass().add("header-text");
 
         Label desc = new Label("Generate a personalized study plan based on your goals and timeline.");
-        desc.setTextFill(javafx.scene.paint.Color.web("#64748b"));
+        desc.getStyleClass().add("subtext");
 
         HBox form = new HBox(15);
         form.setStyle("-fx-alignment: center-left;");
         
         TextField subjectInput = new TextField();
-        subjectInput.setPromptText("Subject (e.g., A Level Physics)");
+        subjectInput.setPromptText("Subject (A Level Physics)");
+        subjectInput.getStyleClass().add("text-field");
         
         TextField goalInput = new TextField();
-        goalInput.setPromptText("Goal (e.g., Cover Mechanics)");
+        goalInput.setPromptText("Goal (Cover Mechanics)");
+        goalInput.getStyleClass().add("text-field");
         
         ComboBox<Integer> daysDropdown = new ComboBox<>();
         daysDropdown.getItems().addAll(1, 3, 5, 7, 14, 30);
         daysDropdown.setValue(7);
+        daysDropdown.getStyleClass().add("text-field");
 
         Button generateBtn = new Button("Generate Plan");
-        generateBtn.setStyle("-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 6;");
+        generateBtn.getStyleClass().add("btn-primary");
         
         form.getChildren().addAll(new Label("Topic:"), subjectInput, new Label("Goal:"), goalInput, new Label("Days:"), daysDropdown, generateBtn);
 
@@ -50,11 +53,9 @@ public class StudyPlannerView {
             resultsArea.getChildren().clear();
             resultsArea.getChildren().add(new Label("Generating study plan for " + subjectInput.getText() + "..."));
             
-            // Here you would call geminiService.generateAIStudyPlan
-            // For now, mockup
             VBox planMockup = new VBox(10);
-            planMockup.setPadding(new Insets(15));
-            planMockup.setStyle("-fx-background-color: #f0fdf4; -fx-border-color: #bbf7d0; -fx-border-radius: 8px;");
+            planMockup.setPadding(new Insets(20));
+            planMockup.getStyleClass().add("card");
             
             for(int i = 1; i <= daysDropdown.getValue(); i++) {
                 Label dayLabel = new Label("Day " + i + ": Study Topic " + i);

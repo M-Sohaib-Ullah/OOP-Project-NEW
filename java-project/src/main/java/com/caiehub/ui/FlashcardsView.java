@@ -15,13 +15,13 @@ public class FlashcardsView {
     public FlashcardsView() {
         root = new VBox(20);
         root.setPadding(new Insets(30));
-        root.setStyle("-fx-background-color: #ffffff;");
+        root.setStyle("-fx-background-color: transparent;");
         
         Label header = new Label("Flashcards");
-        header.setFont(Font.font("System", FontWeight.BOLD, 28));
+        header.getStyleClass().add("header-text");
 
         Button generateBtn = new Button("Generate New AI Deck");
-        generateBtn.setStyle("-fx-background-color: #a855f7; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 6;");
+        generateBtn.getStyleClass().add("btn-primary");
 
         GridPane grid = new GridPane();
         grid.setHgap(20);
@@ -36,18 +36,17 @@ public class FlashcardsView {
 
     private VBox createDeckCard(String title, String subtitle) {
         VBox card = new VBox(10);
-        card.setPadding(new Insets(20));
-        card.setStyle("-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8px; -fx-background-radius: 8px;");
+        card.getStyleClass().add("card");
         card.setPrefWidth(250);
 
         Label titleLabel = new Label(title);
         titleLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
         
         Label subtitleLabel = new Label(subtitle);
-        subtitleLabel.setTextFill(javafx.scene.paint.Color.web("#64748b"));
+        subtitleLabel.getStyleClass().add("subtext");
         
         Button reviewBtn = new Button("Review");
-        reviewBtn.setStyle("-fx-background-color: #f3e8ff; -fx-text-fill: #9333ea; -fx-font-weight: bold;");
+        reviewBtn.getStyleClass().add("btn-secondary");
 
         card.getChildren().addAll(titleLabel, subtitleLabel, reviewBtn);
         return card;

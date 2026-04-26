@@ -17,14 +17,14 @@ public class ExamInterfaceView {
     public ExamInterfaceView() {
         root = new VBox(20);
         root.setPadding(new Insets(30));
-        root.setStyle("-fx-background-color: #ffffff;");
+        root.setStyle("-fx-background-color: transparent;");
         
         Label header = new Label("Past Paper Assessment");
-        header.setFont(Font.font("System", FontWeight.BOLD, 28));
+        header.getStyleClass().add("header-text");
         
         Label detailLabel = new Label("IGCSE Computer Science - Paper 21 - Feb/Mar 2024");
         detailLabel.setFont(Font.font("System", FontWeight.SEMI_BOLD, 18));
-        detailLabel.setTextFill(javafx.scene.paint.Color.web("#475569"));
+        detailLabel.getStyleClass().add("subtext");
 
         HBox timerBox = new HBox(10);
         timerBox.setStyle("-fx-background-color: #fef2f2; -fx-padding: 10px; -fx-border-color: #fecaca; -fx-border-radius: 6px; -fx-alignment: center-left;");
@@ -41,8 +41,7 @@ public class ExamInterfaceView {
         pdfViewerMockup.setContent(pdfMockupLabel);
 
         VBox gradingArea = new VBox(15);
-        gradingArea.setPadding(new Insets(20));
-        gradingArea.setStyle("-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8px;");
+        gradingArea.getStyleClass().add("card");
 
         Label autoGradeLabel = new Label("AI Auto-Grading");
         autoGradeLabel.setFont(Font.font("System", FontWeight.BOLD, 16));
@@ -50,18 +49,20 @@ public class ExamInterfaceView {
         TextArea qTextArea = new TextArea();
         qTextArea.setPromptText("Paste the question text here...");
         qTextArea.setPrefRowCount(2);
+        qTextArea.getStyleClass().add("text-field");
 
         TextArea ansTextArea = new TextArea();
         ansTextArea.setPromptText("Paste your answer text here...");
         ansTextArea.setPrefRowCount(4);
+        ansTextArea.getStyleClass().add("text-field");
 
         Button gradeBtn = new Button("Grade Answer");
-        gradeBtn.setStyle("-fx-background-color: #4f46e5; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 6;");
+        gradeBtn.getStyleClass().add("btn-primary");
 
         gradingArea.getChildren().addAll(autoGradeLabel, new Label("Question:"), qTextArea, new Label("Your Answer:"), ansTextArea, gradeBtn);
 
         Button submitBtn = new Button("Submit Exam");
-        submitBtn.setStyle("-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-padding: 10 20; -fx-background-radius: 8;");
+        submitBtn.getStyleClass().add("btn-primary");
 
         root.getChildren().addAll(header, detailLabel, timerBox, pdfViewerMockup, gradingArea, submitBtn);
     }

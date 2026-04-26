@@ -24,28 +24,29 @@ public class AiTutorView {
         geminiService = new GeminiService();
         root = new VBox(20);
         root.setPadding(new Insets(30));
-        root.setStyle("-fx-background-color: #ffffff;");
+        root.setStyle("-fx-background-color: transparent;");
         
         Label header = new Label("AI Tutor");
-        header.setFont(Font.font("System", FontWeight.BOLD, 28));
+        header.getStyleClass().add("header-text");
 
         chatArea = new VBox(15);
-        chatArea.setPadding(new Insets(15));
-        chatArea.setStyle("-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 8px;");
+        chatArea.setPadding(new Insets(20));
+        chatArea.getStyleClass().add("card");
         
         ScrollPane scrollPane = new ScrollPane(chatArea);
         scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
 
         HBox inputContainer = new HBox(10);
         inputField = new TextField();
         inputField.setPromptText("Ask me about any topic, concept, or past paper question...");
-        inputField.setStyle("-fx-padding: 10px; -fx-font-size: 14px; -fx-background-radius: 8px; -fx-border-color: #cbd5e1; -fx-border-radius: 8px;");
+        inputField.getStyleClass().add("text-field");
         HBox.setHgrow(inputField, Priority.ALWAYS);
         
         Button sendBtn = new Button("Send");
-        sendBtn.setStyle("-fx-background-color: #4f46e5; -fx-text-fill: white; -fx-padding: 10px 20px; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8px;");
+        sendBtn.getStyleClass().add("btn-primary");
         
         sendBtn.setOnAction(e -> handleSend());
         inputField.setOnAction(e -> handleSend());

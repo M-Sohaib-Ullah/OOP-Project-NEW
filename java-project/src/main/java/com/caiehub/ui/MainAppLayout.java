@@ -21,6 +21,8 @@ public class MainAppLayout {
     private LeaderboardView leaderboardView;
     private AnalyticsView analyticsView;
     private ExamInterfaceView examInterfaceView;
+    private HistoryView historyView;
+    private FocusTimerView focusTimerView;
 
     public MainAppLayout() {
         root = new BorderPane();
@@ -32,22 +34,27 @@ public class MainAppLayout {
         leaderboardView = new LeaderboardView();
         analyticsView = new AnalyticsView();
         examInterfaceView = new ExamInterfaceView();
+        historyView = new HistoryView();
+        focusTimerView = new FocusTimerView();
 
         // Sidebar
-        VBox sidebar = new VBox(15);
+        VBox sidebar = new VBox(10);
         sidebar.setPadding(new Insets(20));
-        sidebar.setStyle("-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-width: 0 1 0 0;");
+        sidebar.getStyleClass().add("sidebar");
         
         Label brand = new Label("CAIE Hub");
-        brand.setFont(Font.font("System", FontWeight.BOLD, 24));
+        brand.setFont(Font.font("System", FontWeight.BOLD, 20));
+        brand.setPadding(new Insets(0, 0, 20, 0));
         
-        Button dashboardBtn = createSidebarButton("Dashboard");
-        Button aiTutorBtn = createSidebarButton("AI Tutor");
+        Button dashboardBtn = createSidebarButton("Past Papers");
+        Button examInterfaceBtn = createSidebarButton("Exam Mode");
         Button studyPlannerBtn = createSidebarButton("Study Planner");
+        Button aiTutorBtn = createSidebarButton("AI Tutor");
         Button flashcardsBtn = createSidebarButton("Flashcards");
         Button analyticsBtn = createSidebarButton("Analytics");
+        Button focusTimerBtn = createSidebarButton("Focus Timer");
+        Button historyBtn = createSidebarButton("History");
         Button leaderboardBtn = createSidebarButton("Leaderboard");
-        Button examInterfaceBtn = createSidebarButton("Exam Interface");
 
         dashboardBtn.setOnAction(e -> setContent(dashboardContent.getView()));
         aiTutorBtn.setOnAction(e -> setContent(aiTutorView.getView()));
@@ -56,9 +63,15 @@ public class MainAppLayout {
         analyticsBtn.setOnAction(e -> setContent(analyticsView.getView()));
         leaderboardBtn.setOnAction(e -> setContent(leaderboardView.getView()));
         examInterfaceBtn.setOnAction(e -> setContent(examInterfaceView.getView()));
+        focusTimerBtn.setOnAction(e -> setContent(focusTimerView.getView()));
+        historyBtn.setOnAction(e -> setContent(historyView.getView()));
 
-        sidebar.getChildren().addAll(brand, dashboardBtn, aiTutorBtn, studyPlannerBtn, flashcardsBtn, analyticsBtn, leaderboardBtn, examInterfaceBtn);
-        sidebar.setPrefWidth(220);
+        sidebar.getChildren().addAll(
+                brand, dashboardBtn, examInterfaceBtn, studyPlannerBtn, 
+                aiTutorBtn, flashcardsBtn, analyticsBtn, 
+                focusTimerBtn, historyBtn, leaderboardBtn
+        );
+        sidebar.setPrefWidth(240);
         
         mainContentArea = new VBox();
         root.setLeft(sidebar);
@@ -69,9 +82,8 @@ public class MainAppLayout {
     
     private Button createSidebarButton(String text) {
         Button btn = new Button(text);
-        btn.setStyle("-fx-background-color: transparent; -fx-text-fill: #475569; -fx-font-size: 14px; -fx-alignment: center-left; -fx-padding: 10 15; -fx-pref-width: 180;");
-        btn.setOnMouseEntered(e -> btn.setStyle("-fx-background-color: #e2e8f0; -fx-text-fill: #0f172a; -fx-font-size: 14px; -fx-alignment: center-left; -fx-padding: 10 15; -fx-pref-width: 180; -fx-background-radius: 8px;"));
-        btn.setOnMouseExited(e -> btn.setStyle("-fx-background-color: transparent; -fx-text-fill: #475569; -fx-font-size: 14px; -fx-alignment: center-left; -fx-padding: 10 15; -fx-pref-width: 180;"));
+        btn.getStyleClass().add("sidebar-button");
+        btn.setPrefWidth(200);
         return btn;
     }
 
