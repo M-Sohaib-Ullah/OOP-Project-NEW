@@ -1,0 +1,5 @@
+{
+  "name": "CAIE Past Paper Hub",
+  "description": "Access O/A Level past papers sorted by difficulty based on grade thresholds. Features an AI Tutor for exam preparation.",
+  "requestFramePermissions": []
+}

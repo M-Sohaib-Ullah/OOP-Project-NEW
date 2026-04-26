@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "UserStats": {
+      "title": "UserStats",
+      "description": "User gamification stats",
+      "type": "object",
+      "properties": {
+        "streak": { "type": "number" },
+        "lastStudyDate": { "type": "string" },
+        "totalMinutesStudied": { "type": "number" },
+        "papersCompleted": { "type": "number" },
+        "xp": { "type": "number" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" }
+      }
+    },
+    "PaperAttempt": {
+      "title": "PaperAttempt",
+      "description": "A user's attempt at a past paper",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "paperId": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "subjectCode": { "type": "string" },
+        "year": { "type": "number" },
+        "session": { "type": "string" },
+        "variant": { "type": "number" },
+        "paperNumber": { "type": "number" },
+        "userMarks": { "type": "number" },
+        "totalMarks": { "type": "number" },
+        "aGradeThreshold": { "type": "number" },
+        "timestamp": { "type": "number" },
+        "isExam": { "type": "boolean" },
+        "timeTaken": { "type": "number" },
+        "struggledTopics": { "type": "array", "items": { "type": "string" } },
+        "uid": { "type": "string" }
+      },
+      "required": ["id", "paperId", "uid", "timestamp"]
+    },
+    "FlashcardDeck": {
+      "title": "FlashcardDeck",
+      "description": "A deck of generated flashcards",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "cards": { "type": "array" },
+        "createdAt": { "type": "number" },
+        "uid": { "type": "string" }
+      },
+      "required": ["id", "title", "uid", "createdAt"]
+    },
+    "StudyPlan": {
+      "title": "StudyPlan",
+      "description": "A user's study plan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "goal": { "type": "string" },
+        "startDate": { "type": "number" },
+        "targetDate": { "type": "number" },
+        "tasks": { "type": "array" },
+        "uid": { "type": "string" }
+      },
+      "required": ["id", "uid"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/UserStats" },
+      "description": "User stats and gamification data"
+    },
+    "attempts/{attemptId}": {
+      "schema": { "$ref": "#/entities/PaperAttempt" },
+      "description": "User past paper attempts"
+    },
+    "flashcards/{deckId}": {
+      "schema": { "$ref": "#/entities/FlashcardDeck" },
+      "description": "User flashcard decks"
+    },
+    "studyPlans/{planId}": {
+      "schema": { "$ref": "#/entities/StudyPlan" },
+      "description": "User study plans"
+    }
+  }
+}
